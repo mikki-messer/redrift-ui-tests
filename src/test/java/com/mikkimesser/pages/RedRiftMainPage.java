@@ -35,16 +35,18 @@ public class RedRiftMainPage {
     //url
     String pageUrl = "/";
     //labels
-    static TestDataConfig testDataConfig = ConfigFactory.create(TestDataConfig.class);
+    TestDataConfig testDataConfig = ConfigFactory.create(TestDataConfig.class);
     String newsPageHeaderText = testDataConfig.newsPageHeaderText();
     String jobsPageHeaderText = testDataConfig.jobsPageHeaderText();
     String fbURL = testDataConfig.ceoFacebookURL();
     String lnURL = testDataConfig.ceoLinkedInURL();
     String ceoName = testDataConfig.ceoName();
     String errorName = testDataConfig.errorName();
+
     //actions
     @Step("Opening the page")
     public void openPage() {
+        System.out.println(newsPageHeaderText);
         open(pageUrl);
     }
 
@@ -75,7 +77,6 @@ public class RedRiftMainPage {
 
     @Step("Checking the news page header")
     public void checkNewsPageHeader() {
-        System.out.println(newsPageHeaderText);
         newsPageHeader.shouldHave(Condition.text(newsPageHeaderText));
     }
 
@@ -126,7 +127,7 @@ public class RedRiftMainPage {
 
     @Step("Checking the browser console logs")
     public void checkBrowserConsoleLogs() {
-        String consoleLogs =  String.join("\n", Selenide.getWebDriverLogs(BROWSER));
+        String consoleLogs = String.join("\n", Selenide.getWebDriverLogs(BROWSER));
         assertThat(consoleLogs).doesNotContain(errorName);
     }
 }

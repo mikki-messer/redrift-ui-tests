@@ -38,7 +38,6 @@ public class TestBase {
                     environmentConfig.password(),
                     environmentConfig.remoteURL());
 
-            System.out.println(Configuration.remote);
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
