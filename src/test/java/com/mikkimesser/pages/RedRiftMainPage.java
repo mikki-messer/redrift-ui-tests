@@ -73,8 +73,9 @@ public class RedRiftMainPage {
         newsMenuLink.click();
     }
 
-    @Step("Checking if the lion widget is invisible")
+    @Step("Checking the news page header")
     public void checkNewsPageHeader() {
+        System.out.println(newsPageHeaderText);
         newsPageHeader.shouldHave(Condition.text(newsPageHeaderText));
     }
 
