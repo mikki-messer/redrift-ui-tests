@@ -32,16 +32,13 @@ public class TestBase {
         Configuration.browser = environmentConfig.browser();
         Configuration.browserVersion = environmentConfig.browserVersion();
 
-        System.out.println(Configuration.baseUrl);
-        System.out.println(Configuration.browserSize);
-        System.out.println(Configuration.browser);
-
         if (environment.equals("remote")) {
             Configuration.remote = String.format("https://%s:%s@%s/wd/hub",
                     environmentConfig.login(),
                     environmentConfig.password(),
                     environmentConfig.remoteURL());
 
+            System.out.println(Configuration.remote);
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
