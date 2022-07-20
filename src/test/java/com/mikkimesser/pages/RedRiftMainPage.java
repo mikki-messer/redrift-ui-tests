@@ -7,6 +7,8 @@ import com.mikkimesser.configuration.TestDataConfig;
 import io.qameta.allure.Step;
 import org.aeonbits.owner.ConfigFactory;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Selectors.byLinkText;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -53,7 +55,7 @@ public class RedRiftMainPage {
 
     @Step("Checking if the lion widget is invisible")
     public void checkLionWidgetIsNotVisible() {
-        lionWidget.shouldNotBe(Condition.visible);
+        lionWidget.shouldNotBe(Condition.visible, Duration.ofSeconds(10));
     }
 
     @Step("Checking if the lion widget is visible")
