@@ -6,10 +6,27 @@
 
 - <a href="#rescue_worker_helmet-coverage">Coverage</a>
 - <a href="#rescue_worker_helmet-technology-stack">Technology stack</a>
-- <a href="#rescue_worker_helmet-how-to-launch-from-the-command-line">How to launch from the command line</a>
-- <a href="#rescue_worker_helmet-jenkins-build-example">Jenkins build example</a>
+- <a href="#rescue_worker_helmet-prepare-test-data">Prepare test data</a>
+- <a href="#rescue_worker_helmet-launch">Launch</a>
+  - <a href="#how-to-launch-on-the-local-machine-with-tests-running-locally">How to launch on the local machine with tests running locally</a>
+    - <a href="#launch-with-the-default-params">Launch with the default params</a>
+    - <a href="#launch-with-the-arbitrary-params">Launch with the arbitrary params</a>
+  - <a href="#how-to-launch-on-the-local-machine-with-tests-running-on-the-remote-server">How to launch on the local machine with tests running on the remote server</a>
+    - <a href="#environment-properties-file-example">Environment .properties file example</a>
+    - <a href="#launch-with-the-default-paramets-1">Launch with the default params</a>
+    - <a href="#launch-with-the-arbitrary-params-1">Launch with the arbitrary params</a>
+  - <a href="#how-to-launch-remotely-on-jenkins">How to launch remotely on Jenkins</a>
+    - <a href="#environment-properties-file-example-1">Environment .properties file example</a>
+    - <a href="#launch-with-the-arbitrary-params-on-Jenkins">Launch with the arbitrary params on Jenkins</a>
+    - <a href="#rescue_worker_helmet-jenkins-build-example">Jenkins build example</a>
 - <a href="#rescue_worker_helmet-allure-reports-integration">Allure reports integration</a>
-  <a href="#rescue_worker_helmet-allure-testops-integration">Allure TestOps integration</a>
+  - <a href="#overview">Overview</a>
+  - <a href="#test-suites">Test suites</a>
+  - <a href="#behaviors">Behaviors</a>
+- <a href="#rescue_worker_helmet-allure-testops-integration">Allure TestOps integration</a>
+  - <a href="#dashboards">Dashboards</a>
+  - <a href="#test-cases">Test cases</a>
+  - <a href="#launches">Launches</a>
 - <a href="#rescue_worker_helmet-telegram-notifications">Telegram Notifications</a>
 - <a href="#rescue_worker_helmet-selenoid-launch-example">Selenoid launch example</a>
 
@@ -94,7 +111,7 @@ login=myAwesomeLogin
 password=mySecurePassword
 ```
 
-#### Launch with the default parameters
+#### Launch with the default params
 
 Pass the name of your .properties file via the `environment` system property. For instance, if your `.properties` file's is
 `remote.properties` launch command will be:
@@ -132,7 +149,9 @@ password=mySecurePassword
 
 > Create the `testData.properties` file in the `src/test/resources/configuration/` folder following instructions from <a href="#rescue_worker_helmet-prepare-test-data">here</a>.
 
-#### Jenkins build params
+#### Launch with the arbitrary params on Jenkins
+
+Jenkins build params
 
 - environment - name of the `.properties` file with credentials to the remote Selenoid server.
 - baseURL - the URL of the web-application to test.
