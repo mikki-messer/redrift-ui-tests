@@ -32,7 +32,7 @@ public class RedRiftMainPage {
     SelenideElement contactCard = $(".worker-card__addition-info");
     SelenideElement firstLink = contactCard.$(".worker-social-list__link");
     SelenideElement secondLink = firstLink.sibling(0);
-    //url
+    //path
     String pageUrl = "/";
     //labels
     TestDataConfig testDataConfig = ConfigFactory.create(TestDataConfig.class);
@@ -46,7 +46,6 @@ public class RedRiftMainPage {
     //actions
     @Step("Opening the page")
     public void openPage() {
-        System.out.println(newsPageHeaderText);
         open(pageUrl);
     }
 
@@ -100,7 +99,7 @@ public class RedRiftMainPage {
         contactInfoCard.shouldNotBe(Condition.visible);
     }
 
-    @Step("Checking if the contact info card is invisible")
+    @Step("Checking if the contact info card is visible")
     public void checkContactInfoCardIsVisible() {
         contactInfoCard.shouldBe(Condition.visible);
     }

@@ -20,7 +20,7 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
 
-    static String environment = System.getProperty("environment", "local");
+    static String environment = System.getProperty("environment");
     static EnvironmentConfig environmentConfig = ConfigFactory.create(EnvironmentConfig.class, System.getProperties());
 
     @BeforeAll
@@ -28,11 +28,11 @@ public class TestBase {
     public static void setUp() {
 
         Configuration.baseUrl = System.getProperty("baseURL", "https://redrift.com");
-        Configuration.browserSize = environmentConfig.browserSize();
-        Configuration.browser = environmentConfig.browser();
-        Configuration.browserVersion = environmentConfig.browserVersion();
+        Configuration.browserSize = System.getProperty("browserSize", "1280x800");
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "103.0");
 
-        if (environment.equals("remote")) {
+        if (environmentConfig.isRemote()) {
             Configuration.remote = String.format("https://%s:%s@%s/wd/hub",
                     environmentConfig.login(),
                     environmentConfig.password(),
