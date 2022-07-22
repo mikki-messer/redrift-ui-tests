@@ -53,7 +53,7 @@
 <img width="6%" title="GitHub" src="images/logos/GitHub.svg">
 <img width="6%" title="Jenkins" src="images/logos/Jenkins.svg">
 <img width="6%" title="Telegram" src="images/logos/Telegram.svg">
-<img width="6%" title="Telegram" src="images/logos/Allure_TO.svg">
+<img width="6%" title="Allure Test Ops" src="images/logos/Allure_TO.svg">
 </p>
 
 ## :rescue_worker_helmet: Prepare test data
