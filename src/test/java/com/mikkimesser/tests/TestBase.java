@@ -30,7 +30,10 @@ public class TestBase {
         Configuration.baseUrl = System.getProperty("baseURL", "https://redrift.com");
         Configuration.browserSize = System.getProperty("browserSize", "1280x800");
         Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion", "103.0");
+        String browserVersion = System.getProperty("browserVersion", "");
+
+        if (browserVersion.isEmpty())
+            Configuration.browserVersion = browserVersion;
 
         if (environmentConfig.isRemote()) {
             Configuration.remote = String.format("https://%s:%s@%s/wd/hub",
