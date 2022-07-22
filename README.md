@@ -13,7 +13,7 @@
     - <a href="#launch-with-the-arbitrary-params">Launch with the arbitrary params</a>
   - <a href="#how-to-launch-on-the-local-machine-with-tests-running-on-the-remote-server">How to launch on the local machine with tests running on the remote server</a>
     - <a href="#environment-properties-file-example">Environment .properties file example</a>
-    - <a href="#launch-with-the-default-paramets-1">Launch with the default params</a>
+    - <a href="#launch-with-the-default-params-1">Launch with the default params</a>
     - <a href="#launch-with-the-arbitrary-params-1">Launch with the arbitrary params</a>
   - <a href="#how-to-launch-remotely-on-jenkins">How to launch remotely on Jenkins</a>
     - <a href="#environment-properties-file-example-1">Environment .properties file example</a>
@@ -130,6 +130,8 @@ gradle clean test -"Dbrowser=yourPreciousBrowser" -"DbrowserSize=AAAAxBBBB" -"Db
 
 ### How to launch remotely on Jenkins
 
+> Create the `testData.properties` file in the `src/test/resources/configuration/` folder following instructions from <a href="#rescue_worker_helmet-prepare-test-data">here</a>.
+
 > Create the `.properties` file with any given name in the `src/test/resources/configuration/` folder with the
 login and password to the Selenoid server and with the boolean parameter isRemote set to "true".
 You can include the URL of the remote server in the `remoteURL` field as well. It might be useful
@@ -146,8 +148,6 @@ remoteURL=myselenoid.example.com
 login=myAwesomeLogin
 password=mySecurePassword
 ```
-
-> Create the `testData.properties` file in the `src/test/resources/configuration/` folder following instructions from <a href="#rescue_worker_helmet-prepare-test-data">here</a>.
 
 #### Launch with the arbitrary params on Jenkins
 
