@@ -11,19 +11,6 @@ import org.junit.jupiter.api.Test;
 @Owner("mikki_messer")
 public class MainPageUITests extends TestBase {
 
-    /*
-    TODO
-    1. Добавить переключатель, систем проперти remote/local +
-    2. Вынести тестовые данные в файл пропертис +
-    3. Добавить сторис и оунера +
-    4. Новый репо +
-    5. Джоб в дженкинс +
-    6. Добавить интеграцию с аллюр тестопс +
-    7. Настроить в джобе отправку запусков в аллюр +
-    8. Переснять скриншоты для ридми
-    9. Прогнать текст ридми через граммарли
-     */
-
     @Test
     @Feature("Animated lion widget")
     @Story("Browsing main page")
@@ -90,7 +77,7 @@ public class MainPageUITests extends TestBase {
     @Test
     @Feature("Main page")
     @Story("Checking console")
-    @DisplayName("Check that there are no SEVERE errors in the console logs")
+    @DisplayName("Check that there are no errors in the console logs")
     public void browserConsoleErrorsTest() {
         RedRiftMainPage redRiftMainPage = new RedRiftMainPage();
         redRiftMainPage.openPage();

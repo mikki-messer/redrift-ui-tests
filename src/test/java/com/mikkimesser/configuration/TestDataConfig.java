@@ -8,11 +8,11 @@ public interface TestDataConfig extends Config {
 
     String jobsPageHeaderText();
 
-    String ceoFacebookURL();
+    String firstURLOfTheFirstContact();
 
-    String ceoLinkedInURL();
+    String secondURLOfTheFirstContact();
 
-    String ceoName();
+    String nameOfTheFirstContact();
 
     String errorName();
 }

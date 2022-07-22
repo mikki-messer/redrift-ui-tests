@@ -38,9 +38,9 @@ public class RedRiftMainPage {
     TestDataConfig testDataConfig = ConfigFactory.create(TestDataConfig.class);
     String newsPageHeaderText = testDataConfig.newsPageHeaderText();
     String jobsPageHeaderText = testDataConfig.jobsPageHeaderText();
-    String fbURL = testDataConfig.ceoFacebookURL();
-    String lnURL = testDataConfig.ceoLinkedInURL();
-    String ceoName = testDataConfig.ceoName();
+    String fbURL = testDataConfig.firstURLOfTheFirstContact();
+    String lnURL = testDataConfig.secondURLOfTheFirstContact();
+    String ceoName = testDataConfig.nameOfTheFirstContact();
     String errorName = testDataConfig.errorName();
 
     //actions

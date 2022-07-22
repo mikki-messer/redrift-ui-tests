@@ -36,7 +36,7 @@ public class TestBase {
             Configuration.browserVersion = browserVersion;
 
         if (environmentConfig.isRemote()) {
-            Configuration.remote = String.format("https://%s:%s@%s/wd/hub",
+            Configuration.remote = String.format("https://%s:%s@%s%s/wd/hub",
                     environmentConfig.login(),
                     environmentConfig.password(),
                     environmentConfig.remoteURL());
