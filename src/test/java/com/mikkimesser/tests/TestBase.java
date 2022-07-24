@@ -53,18 +53,11 @@ public class TestBase {
     @AfterEach
     @Step("Saving screenshot, video, page source, and console logs (except of FireFox)")
     void addAttachments() {
-        String screenshotName;                                // Returns a `String`.
-        screenshotName = String.format("Screenshot %s", ZonedDateTime                    // Represent a moment as perceived in the wall-clock time used by the people of a particular region ( a time zone).
-                .now(                            // Capture the current moment.
-                        ZoneId.of("Europe/Moscow")  // Specify the time zone using proper Continent/Region name. Never use 3-4 character pseudo-zones such as PDT, EST, IST.
-                )                                // Returns a `ZonedDateTime` object.
-                .format(                         // Generate a `String` object containing text representing the value of our date-time object.
-                        DateTimeFormatter.ofPattern("uuuu.MM.dd.HH.mm.ss")
-                ));
-        Attach.screenshotAs(screenshotName);
+        Attach.screenshotWithTimeStamp();
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
         closeWebDriver();
     }
+
 }

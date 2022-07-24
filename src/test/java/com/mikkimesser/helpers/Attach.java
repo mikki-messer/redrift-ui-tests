@@ -14,6 +14,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -34,6 +37,11 @@ public class Attach {
     @Attachment(value = "{attachName}", type = "image/png")
     public static byte[] screenshotAs(String attachName) {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
+    }
+
+    public static void screenshotWithTimeStamp() {
+        String screenshotAlias = generateScreenshotAlias();
+        screenshotAs(screenshotAlias);
     }
 
     public static void browserConsoleLogs() {
@@ -59,8 +67,8 @@ public class Attach {
 
     public static URL getVideoUrl(String sessionId) {
         EnvironmentConfig environmentConfig = ConfigFactory.create(EnvironmentConfig.class, System.getProperties());
-        String selenoidURL = String.format("https://%s/video/",environmentConfig.remoteURL());
-        String videoUrl = String.format("%s%s.mp4",selenoidURL ,sessionId);
+        String selenoidURL = String.format("https://%s/video/", environmentConfig.remoteURL());
+        String videoUrl = String.format("%s%s.mp4", selenoidURL, sessionId);
 
         try {
             return new URL(videoUrl);
@@ -70,7 +78,17 @@ public class Attach {
         return null;
     }
 
-    public static String getSessionId(){
+    public static String getSessionId() {
         return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
+    }
+
+    public static String generateScreenshotAlias() {
+        return String.format("Screenshot %s", ZonedDateTime                    // Represent a moment as perceived in the wall-clock time used by the people of a particular region ( a time zone).
+                .now(                            // Capture the current moment.
+                        ZoneId.of("Europe/Belgrade")  // Specify the time zone using proper Continent/Region name. Never use 3-4 character pseudo-zones such as PDT, EST, IST.
+                )                                // Returns a `ZonedDateTime` object.
+                .format(                         // Generate a `String` object containing text representing the value of our date-time object.
+                        DateTimeFormatter.ofPattern("uuuu.MM.dd.HH.mm.ss")
+                ));
     }
 }
