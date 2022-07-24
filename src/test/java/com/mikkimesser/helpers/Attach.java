@@ -47,8 +47,6 @@ public class Attach {
     public static void browserConsoleLogs() {
         //Mike 2022-06-15
         //FireFox driver doesn't support saving console logs
-        System.out.println(Configuration.browser);
-
         if (Objects.equals(Configuration.browser.toLowerCase(Locale.ROOT), "firefox"))
             return;
 
