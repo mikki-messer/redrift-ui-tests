@@ -7,6 +7,7 @@
 - <a href="#rescue_worker_helmet-coverage">Coverage</a>
 - <a href="#rescue_worker_helmet-technology-stack">Technology stack</a>
 - <a href="#rescue_worker_helmet-prepare-test-data">Prepare test data</a>
+  - <a href=#testdataproperties-file-example>TestData.properties file example</a>
 - <a href="#rescue_worker_helmet-launch">Launch</a>
   - <a href="#how-to-launch-on-the-local-machine-with-tests-running-locally">How to launch on the local machine with tests running locally</a>
     - <a href="#launch-with-the-default-params">Launch with the default params</a>
@@ -67,6 +68,17 @@ Required test data:
 - `secondURLOfTheFirstContact` - String. Required for the Check display of the contact card for the first contact test. The second link in the contact card of the first contact in the Contacts block.
 - `nameOfTheFirstContact` - String. Required for the Check display of the contact card for the first contact test. The name the contact card of the first contact in the Contacts block.
 - `errorName` - String. Required for the Check that there are no errors in the console logs. The text of the error to look for.
+
+### TestData.properties file example
+
+```
+newsPageHeaderText=Blog & News
+jobsPageHeaderText=Red Rift Awaits You Stranger
+firstURLOfTheFirstContact=https://facebook.com/Denis.Puhleacov
+secondURLOfTheFirstContact=https://www.linkedin.com/in/denis-puhleacov/
+nameOfTheFirstContact=Denis P.
+errorName=SEVERE
+```
 
 ## :rescue_worker_helmet: Launch
 
