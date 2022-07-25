@@ -1,22 +1,26 @@
 package com.mikkimesser.tests;
 
-import com.mikkimesser.pages.RedRiftMainPage;
+import com.mikkimesser.configuration.TestDataConfig;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
-import io.qameta.allure.Step;
 import io.qameta.allure.Story;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @Owner("mikki_messer")
-public class MainPageUITests extends TestBase {
+public class MainPageInteractiveElementsTests extends TestBase {
+
+    String firstURLOfTheFirstContact = testDataConfig.firstURLOfTheFirstContact();
+    String secondURLOfTheFirstContact = testDataConfig.secondURLOfTheFirstContact();
+    String firstContactName = testDataConfig.nameOfTheFirstContact();
+
 
     @Test
     @Feature("Animated lion widget")
     @Story("Browsing main page")
     @DisplayName("Check if the lion widget appears on scrolling to the Success rate block")
     public void showLionTest() {
-        RedRiftMainPage redRiftMainPage = new RedRiftMainPage();
         redRiftMainPage.openPage();
         redRiftMainPage.checkLionWidgetIsNotVisible();
         redRiftMainPage.scrollToSuccessRateBlock();
@@ -28,7 +32,6 @@ public class MainPageUITests extends TestBase {
     @Story("Browsing main page")
     @DisplayName("Check closing of the lion widget")
     public void closeLionTest() {
-        RedRiftMainPage redRiftMainPage = new RedRiftMainPage();
         redRiftMainPage.openPage();
         redRiftMainPage.scrollToSuccessRateBlock();
         redRiftMainPage.checkLionWidgetIsVisible();
@@ -36,52 +39,21 @@ public class MainPageUITests extends TestBase {
         redRiftMainPage.checkLionWidgetIsNotVisible();
     }
 
-    @Test
-    @Feature("Main menu")
-    @Story("Clicking news links")
-    @DisplayName("Check the News link")
-    public void newsLinkTest() {
-        RedRiftMainPage redRiftMainPage = new RedRiftMainPage();
-        redRiftMainPage.openPage();
-        redRiftMainPage.clickOnNewsLink();
-        redRiftMainPage.checkNewsPageHeader();
-    }
 
-    @Test
-    @Feature("Main menu")
-    @Story("Clicking jobs link")
-    @DisplayName("Check the Join our team link")
-    public void jobsLinkTest() {
-        RedRiftMainPage redRiftMainPage = new RedRiftMainPage();
-        redRiftMainPage.openPage();
-        redRiftMainPage.clickOnJobsLink();
-        redRiftMainPage.checkJobsPageHeader();
-    }
 
     @Test
     @Feature("Popup contact cards")
     @Story("Watching CEO contacts")
     @DisplayName("Check display of the contact card for the first contact")
     public void showCEOContactsTest() {
-        RedRiftMainPage redRiftMainPage = new RedRiftMainPage();
         redRiftMainPage.openPage();
         redRiftMainPage.scrollToContactsBlock();
         redRiftMainPage.checkContactInfoCardIsNotVisible();
-        redRiftMainPage.checkFirstContactName();
+        redRiftMainPage.checkFirstContactName(firstContactName);
         redRiftMainPage.hoverOnContactCard();
         redRiftMainPage.checkContactInfoCardIsVisible();
-        redRiftMainPage.checkContactsFirstLink();
-        redRiftMainPage.checkContactsSecondLink();
-    }
-
-    @Test
-    @Feature("Main page")
-    @Story("Checking console")
-    @DisplayName("Check that there are no errors in the console logs")
-    public void browserConsoleErrorsTest() {
-        RedRiftMainPage redRiftMainPage = new RedRiftMainPage();
-        redRiftMainPage.openPage();
-        redRiftMainPage.checkBrowserConsoleLogs();
+        redRiftMainPage.checkContactsFirstLink(firstURLOfTheFirstContact);
+        redRiftMainPage.checkContactsSecondLink(secondURLOfTheFirstContact);
     }
 }
 

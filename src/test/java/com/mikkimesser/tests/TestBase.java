@@ -5,6 +5,9 @@ import com.mikkimesser.configuration.EnvironmentConfig;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.mikkimesser.configuration.TestDataConfig;
 import com.mikkimesser.helpers.Attach;
+import com.mikkimesser.pages.RedRiftJobsPage;
+import com.mikkimesser.pages.RedRiftMainPage;
+import com.mikkimesser.pages.RedRiftNewsPage;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
@@ -22,6 +25,10 @@ public class TestBase {
 
     static String environment = System.getProperty("environment");
     static EnvironmentConfig environmentConfig = ConfigFactory.create(EnvironmentConfig.class, System.getProperties());
+    static RedRiftMainPage redRiftMainPage = new RedRiftMainPage();
+    static RedRiftNewsPage redRiftNewsPage = new RedRiftNewsPage();
+    static RedRiftJobsPage redRiftJobsPage = new RedRiftJobsPage();
+    static TestDataConfig testDataConfig = ConfigFactory.create(TestDataConfig.class);
 
     @BeforeAll
     @Step("Preliminary setup")

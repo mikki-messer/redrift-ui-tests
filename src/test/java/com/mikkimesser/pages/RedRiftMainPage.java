@@ -23,9 +23,7 @@ public class RedRiftMainPage {
     SelenideElement lionWidget = $(".leon__message");
     SelenideElement lionWidgetCloseButton = $(".btn-close");
     SelenideElement newsMenuLink = $(byLinkText("news"));
-    SelenideElement newsPageHeader = $(".page-inner__title");
     SelenideElement jobsMenuLink = $(byLinkText("join our team!"));
-    SelenideElement jobsPageHeader = $(".page-inner__title");
     SelenideElement contactsBlock = $(byText("Who We"));
     SelenideElement contactInfoCard = $(".worker-social-list");
     SelenideElement contactName = $(".worker-card__description-name");
@@ -34,14 +32,6 @@ public class RedRiftMainPage {
     SelenideElement secondLink = firstLink.sibling(0);
     //path
     String pageUrl = "/";
-    //labels
-    TestDataConfig testDataConfig = ConfigFactory.create(TestDataConfig.class);
-    String newsPageHeaderText = testDataConfig.newsPageHeaderText();
-    String jobsPageHeaderText = testDataConfig.jobsPageHeaderText();
-    String fbURL = testDataConfig.firstURLOfTheFirstContact();
-    String lnURL = testDataConfig.secondURLOfTheFirstContact();
-    String ceoName = testDataConfig.nameOfTheFirstContact();
-    String errorName = testDataConfig.errorName();
 
     //actions
     @Step("Opening the page")
@@ -74,20 +64,11 @@ public class RedRiftMainPage {
         newsMenuLink.click();
     }
 
-    @Step("Checking the news page header")
-    public void checkNewsPageHeader() {
-        newsPageHeader.shouldHave(Condition.text(newsPageHeaderText));
-    }
-
     @Step("Clicking on the jobs link")
     public void clickOnJobsLink() {
         jobsMenuLink.click();
     }
 
-    @Step("Checking the jobs page header")
-    public void checkJobsPageHeader() {
-        jobsPageHeader.shouldHave(Condition.text(jobsPageHeaderText));
-    }
 
     @Step("Scrolling to the contacts block")
     public void scrollToContactsBlock() {
@@ -104,9 +85,9 @@ public class RedRiftMainPage {
         contactInfoCard.shouldBe(Condition.visible);
     }
 
-    @Step("Checking the name of the first contact")
-    public void checkFirstContactName() {
-        contactName.shouldHave(Condition.text(ceoName));
+    @Step("Checking that name of the first contact equals to {firstContactName}")
+    public void checkFirstContactName(String firstContactName) {
+        contactName.shouldHave(Condition.text(firstContactName));
     }
 
     @Step("Hovering on the first contact card")
@@ -114,18 +95,18 @@ public class RedRiftMainPage {
         contactCard.hover();
     }
 
-    @Step("Checking the first link on the contact card")
-    public void checkContactsFirstLink() {
-        firstLink.shouldHave(Condition.href(fbURL));
+    @Step("Checking that the first link on the contact card is {firstLinkURL}")
+    public void checkContactsFirstLink(String firstLinkURL) {
+        firstLink.shouldHave(Condition.href(firstLinkURL));
     }
 
-    @Step("Checking the second link on the contact card")
-    public void checkContactsSecondLink() {
-        secondLink.shouldHave(Condition.href(lnURL));
+    @Step("Checking that the second link on the contact card is {secondLinkURL}")
+    public void checkContactsSecondLink(String secondLinkURL) {
+        secondLink.shouldHave(Condition.href(secondLinkURL));
     }
 
-    @Step("Checking the browser console logs")
-    public void checkBrowserConsoleLogs() {
+    @Step("Checking that browser console logs do not contain {errorName} errors")
+    public void checkBrowserConsoleLogs(String errorName) {
         String consoleLogs = String.join("\n", Selenide.getWebDriverLogs(BROWSER));
         assertThat(consoleLogs).doesNotContain(errorName);
     }
